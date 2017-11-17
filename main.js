@@ -1,7 +1,7 @@
 //Initializes javascript for divs that have the .datepicker class on document.ready
 $(document).ready(function(){
 
-    let inputChange = function(element){
+    let changeInput = function(element){
         let elementId = element.attr("id");
         
         if (element.find("input").attr("value") === ""){
@@ -16,14 +16,15 @@ $(document).ready(function(){
         //Scaffold with MVC//
         $(this).attr("class", "datepicker form-group");
         $(this).append("<div class='date-wrapper'></div>");
+        $(this).attr('data-year', '1000');
 
         let dateWrapper = $(this).find(".date-wrapper"),
             id = $(this).attr("id");
 
-        //$(this).attr("id", id + "_datepicker");
+        $(this).attr("id", id + "_datepicker");
         Calendar.scaffoldDatepicker(dateWrapper, id);
         //End MVC Scaffold//
-        inputChange($(this));
+        changeInput($(this));
         
     });
     //Attaches a toggle to clicking the input that will reveal the datepicker.
@@ -31,11 +32,5 @@ $(document).ready(function(){
         $(this).parent().find(".calendar-wrapper").slideToggle(300);
     });
 
-            //I want to maybe close the picker on outside click, but it's on the back burner at the moment.
-    //Calendar.closePickerOnOutsideClick();
-    // $(".closeClick").click(function(e){
-    //     console.log($(this));
-    //     console.log($(this).closest("table"));    
-    // });
 });
 

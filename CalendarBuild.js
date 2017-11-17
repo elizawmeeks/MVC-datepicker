@@ -17,7 +17,7 @@ var Calendar = (function(originalCalendar){
         Calendar.populateYearDropdown(id, date);
         Calendar.addDayNames(id);
         Calendar.addDays(id, date, days.firstDayOfMonth, days.lastDayOfMonth, days.daysInMonth);
-        Calendar.clearAndToday(id);
+        Calendar.populateClearAndToday(id);
         Calendar.previousMonthClick(id);
         Calendar.nextMonthClick(id);
         Calendar.todayClick();
@@ -27,36 +27,26 @@ var Calendar = (function(originalCalendar){
         //clearInputClick has to be called before closeClicks or the event.stopImmediatePropagation() event will stop the clear button from clearing. No moving!
         Calendar.clearInputClick();
         Calendar.closeClicks();
-    }
-
-    // originalCalendar.appendToWrapper = function(element, id){
-    //     element.append("<div class='calendar-wrapper'></div>");
-    //     let calWrapper = element.find('.calendar-wrapper');
-    //     calWrapper.append("<div class='date-text text-center'></div>");
-    //     calWrapper.append("<div class='month-year-picker text-center'></div>");
-    //     calWrapper.append("<div class='calendar'></div>");
-
-    //     Calendar.buildCalendarMonth(id, new Date());
-    // };
+    };
 
     originalCalendar.buildNullCalendarMonth = function(id, date){
         let days = getFirstLastAndNumberOfDaysInMonth(date),
-            timepickerId = id + "_timepicker",
-            inputId = id;
+            datepickerId = id,
+            inputId = id.split("_datepicker")[0];
 
-        Calendar.clearCalendar(id);
-        Calendar.emptyInput(id, date);
-        populateCalendar(id, date);
+        Calendar.clearCalendar(datepickerId);
+        Calendar.emptyInput(inputId, date);
+        populateCalendar(datepickerId, date);
     }
 
     originalCalendar.buildCalendarMonth = function(id, date){
         let days = getFirstLastAndNumberOfDaysInMonth(date),
-            timepickerId = id + "_timepicker",
-            inputId = id;
+            datepickerId = id,
+            inputId = id.split("_datepicker")[0];
 
-        Calendar.clearCalendar(id);
-        Calendar.populateInput(id, date);
-        populateCalendar(id, date);
+        Calendar.clearCalendar(datepickerId);
+        Calendar.populateInput(inputId, date);
+        populateCalendar(datepickerId, date);
     };
 
     return originalCalendar;
