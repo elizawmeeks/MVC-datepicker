@@ -76,7 +76,7 @@ var Calendar = (function(originalCalendar){
                 newDate = new Date(year, month, day);
             
             //if the previous month (ex Sept) has fewer days than the current month (ex Oct) and one of those end days is selected(ie Oct 31), set the current day to the last day of the new month (ex Sept 30)
-            if (newDate.getDate() !== parseInt($("#" + id).find(".titleDay").html())){
+            if (newDate.getDate() !== day){
                 newDate = new Date(year, month + 1, 0);
             }
 
@@ -86,10 +86,17 @@ var Calendar = (function(originalCalendar){
 
     originalCalendar.yearDropdownClick = function(id){
         $(".year-dropdown").change(function () {
-            let thisID = $(this).closest(".datepicker").attr("id");
-            let date = new Date($("#" + id).find(".year-dropdown option:selected").val(), $("#" + id).find(".titleMonth").html() - 1, 1);
-        
-            Calendar.buildCalendarMonth(thisID, date);
+            let thisID = $(this).closest(".datepicker").attr("id"),
+                year = parseInt($("#" + id).find(".year-dropdown option:selected").val()),
+                month = parseInt($("#" + id).find(".titleMonth").html() - 1),
+                day = parseInt($("#" + id).find(".titleDay").html()),
+                newDate = new Date($("#" + id).find(".year-dropdown option:selected").val(), $("#" + id).find(".titleMonth").html() - 1, day);
+            
+            if (newDate.getDate() !== day){
+                newDate = new Date(year, month + 1, 0);
+            }
+            
+            Calendar.buildCalendarMonth(thisID, newDate);
         });
     };
 
