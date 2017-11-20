@@ -94,6 +94,7 @@ var Calendar = (function(originalCalendar){
             calBlockArray.push("<td></td>")
         }
         let thisWeek;
+        //appends the table
         for (let i = 1; i <= calBlockArray.length; i++){
             thisWeek += calBlockArray[i];
             if (i%7 === 0){
