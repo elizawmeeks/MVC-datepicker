@@ -17,12 +17,21 @@
     border-top: none;
 }
 
-/* .timepicker .table tbody tr td {
+.timepicker .table tbody tr td {
     border-top: none;
-} */
+}
 
 .pointer{
     cursor: pointer;
+}
+
+.num{
+    width: 75px;
+}
+
+.grey{
+    cursor: default;
+    color: rgba(0,0,0,.15);
 }
 
 .timeSelect-wrapper{
@@ -31,5 +40,12 @@
     border-radius: 1.5%;
     box-shadow: 0 1px 2px rgba(0,0,0,.05) inset;
     width: 275px;
+    height: 200px;
     margin: 0;
+}
+
+.amPM{
+    font-size: 3em;
+    line-height: 178px;
+    white-space: nowrap;
 }

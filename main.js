@@ -36,20 +36,28 @@ $(document).ready(function(){
         $(this).attr("id", id + "_timepicker");
         timeWrapper.append("<label for='" + id + "'>Timepicker:</label>");
         timeWrapper.append("<input type='text' id='" + id + "' class='form-control datepickerInput' style='background-color:white;' readOnly value='00:00'>");
-        timeWrapper.append("<div class='timeSelect-wrapper''></div>");
+        timeWrapper.append("<div class='timeSelect-wrapper'></div>");
 
         let timeSelect = timeWrapper.find('.timeSelect-wrapper'),
-            numBlock = [];
+            numBlock = [],
+            hour1Click = [1, 0];
         timeSelect.append("<table class='table'></table>");
         console.log("time table", $(this).find("table"));
         //$(this).find("table").append("<thead></thead>");
         $(this).find("table").append("<tbody></tbody>");
         for (let i = 1; i < 10; i++){
-            numBlock.push("<td align='center' id='num-" + i + "-" + id + "' class='num pointer'>" + i + "</td>")
+            if (i === 1){
+                numBlock.push("<td align='center' id='num-" + i + "-" + id + "' class='num pointer timeClick'>" + i + "</td>")
+            } else{
+                numBlock.push("<td align='center' id='num-" + i + "-" + id + "' class='num pointer grey'>" + i + "</td>")
+            }
         }
         numBlock.push("<td></td>");
-        numBlock.push("<td align='center' id='num-0-" + id + "' class='num pointer'>0</td>");
+        numBlock.push("<td align='center' id='num-0-" + id + "' class='num pointer timeClick'>0</td>");
         numBlock.push("<td></td>");
+        numBlock.push("<td align='center' id='num-clear-" + id + "' class='num pointer clear'>Clear</td>");
+        numBlock.push("<td></td>");
+        numBlock.push("<td align='center' id='num-ok-" + id + "' class='num pointer ok'>OK</td>");
         let thisRow;
         for (let i = 1; i <= numBlock.length; i++){
             thisRow += numBlock[i - 1];
@@ -58,6 +66,7 @@ $(document).ready(function(){
                 thisRow = "";
             }
         }
+        Time.beginSequence(id);
     });
     //Attaches a toggle to clicking the input that will reveal the datepicker.
     $(".datepickerInput").click(function(e){
