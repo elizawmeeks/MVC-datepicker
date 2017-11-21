@@ -26,12 +26,17 @@
 }
 
 .num{
-    width: 75px;
+    width: 40px;
 }
 
 .grey{
     cursor: default;
     color: rgba(0,0,0,.15);
+}
+
+.selectedTime{
+    background-color: teal;
+    border-radius: 100%;
 }
 
 .timeSelect-wrapper{
@@ -40,12 +45,16 @@
     border-radius: 1.5%;
     box-shadow: 0 1px 2px rgba(0,0,0,.05) inset;
     width: 275px;
-    height: 200px;
+    /* height: 200px; */
     margin: 0;
 }
 
-.amPM{
+.time-wrapper table {
+    margin: 0;
+}
+
+/* .amPM{
     font-size: 3em;
     line-height: 178px;
     white-space: nowrap;
-}
+} */
