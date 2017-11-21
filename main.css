@@ -13,6 +13,10 @@
     color: white;
 }
 
+.timepicker .table {
+    border-collapse: separate;
+}
+
 .datepicker .table tbody tr td {
     border-top: none;
 }
@@ -27,15 +31,12 @@
 
 .num{
     width: 40px;
-}
-
-.grey{
-    cursor: default;
-    color: rgba(0,0,0,.15);
+    height: 40px;
 }
 
 .selectedTime{
-    background-color: teal;
+    background-color: #990000;
+    color: white;
     border-radius: 100%;
 }
 
@@ -52,9 +53,3 @@
 .time-wrapper table {
     margin: 0;
 }
-
-/* .amPM{
-    font-size: 3em;
-    line-height: 178px;
-    white-space: nowrap;
-} */
